@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  hackathon-db:
+    image: postgres:12
+    container_name: "hackathon-db"
+    environment:
+      - POSTGRES_DB=hackathon-db
+      - POSTGRES_USER=hackathon-db
+      - POSTGRES_PASSWORD=hackathon2023
+      - TZ=GMT-3
+    volumes:
+      - "./data/postgres:/var/lib/postgres/data"
+    ports:
+      - 5433:5432
+    networks:
+      - hackathon-networks
+    
+networks:
+  hackathon-networks:
+    driver: bridge
